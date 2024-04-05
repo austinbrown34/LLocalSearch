@@ -85,7 +85,20 @@ func startAgentChain(ctx context.Context, outputChan chan<- utils.HttpJsonStream
 			},
 			SessionString: session,
 		},
+		llm_tools.FetchURLContent{
+			CallbacksHandler: utils.CustomHandler{
+				OutputChan: outputChan,
+			},
+			SessionString: session,
+		},
+
 		llm_tools.SearchVectorDB{
+			CallbacksHandler: utils.CustomHandler{
+				OutputChan: outputChan,
+			},
+			SessionString: session,
+		},
+		llm_tools.SearchVectorDBByUrl{
 			CallbacksHandler: utils.CustomHandler{
 				OutputChan: outputChan,
 			},
